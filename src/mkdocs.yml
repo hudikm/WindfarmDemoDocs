@@ -1,0 +1,43 @@
+# Project info
+site_name: WindFarmDemo REST service
+
+# Repository
+repo_name: 'WindFarmDemo'
+repo_url: 'https://github.com/hudikm/WindFarmDemo'
+
+nav:
+ - Úvod: index.md
+ - Import projektu: import_postup.md
+ - Server:
+   - 'Štruktúra projektu': projekt.md
+   - 'REST api': swagger_api.md
+ - Web:
+   - 'Štruktúra projektu': web_projekt.md
+   - 'Rozloženie stránky': page_layout.md
+ - Odkazy: /#odkazy
+ - 'GIT repozitár':
+   - 'WindfarmDemo service': https://github.com/hudikm/WindFarmDemo
+   - 'WindfarmDemo web server': https://github.com/hudikm/WindFarmDemoWeb
+theme: 
+   name: 'material'
+   language: 'sk'
+   logo: '/img/logo_50px.png'
+   favicon: '/img/favicon.png'
+   font:
+    text: 'Roboto'
+    code: 'Roboto Mono'
+markdown_extensions:
+  - markdown.extensions.smarty:
+      smart_quotes: false
+  - pymdownx.smartsymbols
+  - pymdownx.details
+  - admonition
+  - plantuml-markdown
+  - pymdownx.superfences:
+      preserve_tabs: true
+  - codehilite:
+       linenums: true
+       guess_lang: false
+  - fontawesome_markdown
+  - toc:
+      permalink: true
