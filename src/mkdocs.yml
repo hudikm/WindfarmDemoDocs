@@ -14,7 +14,7 @@ nav:
  - Web:
    - 'Štruktúra projektu': web_projekt.md
    - 'Rozloženie stránky': page_layout.md
- - Odkazy: /#odkazy
+ - Odkazy: '#odkazy'
  - 'GIT repozitár':
    - 'WindfarmDemo service': https://github.com/hudikm/WindFarmDemo
    - 'WindfarmDemo web server': https://github.com/hudikm/WindFarmDemoWeb
