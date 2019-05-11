@@ -1,0 +1,3678 @@
+
+
+
+
+<!doctype html>
+<html lang="sk" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Kopírovať do schránky">
+      
+        <meta name="lang:clipboard.copied" content="Skopírované do schránky">
+      
+        <meta name="lang:search.language" content="sk">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="Žiadne vyhovujúce dokumenty">
+      
+        <meta name="lang:search.result.one" content="Vyhovujúci dokument: 1">
+      
+        <meta name="lang:search.result.other" content="Vyhovujúce dokumenty: #">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../img/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.0.2">
+    
+    
+      
+        <title>REST api - WindFarmDemo REST service</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.982221ab.css">
+      
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.1f0bcf2b.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#windfarmdemo-microservices" tabindex="1" class="md-skip">
+        Preskočiť na obsah
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href=".." title="WindFarmDemo REST service" class="md-header-nav__button md-logo">
+          
+            <img src="../img/logo_50px.png" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              WindFarmDemo REST service
+            </span>
+            <span class="md-header-nav__topic">
+              REST api
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Hľadať" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Pre vyhľadávanie začni písať
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/hudikm/WindFarmDemo/" title="Zobraziť repozitár" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    WindFarmDemo
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href=".." title="WindFarmDemo REST service" class="md-nav__button md-logo">
+      
+        <img src="../img/logo_50px.png" width="48" height="48">
+      
+    </a>
+    WindFarmDemo REST service
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/hudikm/WindFarmDemo/" title="Zobraziť repozitár" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    WindFarmDemo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Úvod" class="md-nav__link">
+      Úvod
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../import_postup/" title="Import projektu" class="md-nav__link">
+      Import projektu
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      Server
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Server
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../projekt/" title="Štruktúra projektu" class="md-nav__link">
+      Štruktúra projektu
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        REST api
+      </label>
+    
+    <a href="./" title="REST api" class="md-nav__link md-nav__link--active">
+      REST api
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Obsah</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" title="Overview" class="md-nav__link">
+    Overview
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uri-scheme" title="URI scheme" class="md-nav__link">
+    URI scheme
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tags" title="Tags" class="md-nav__link">
+    Tags
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resources" title="Resources" class="md-nav__link">
+    Resources
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#oauth2-and-login" title="OAuth2 And Login" class="md-nav__link">
+    OAuth2 And Login
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#display-login-page" title="Display Login page" class="md-nav__link">
+    Display Login page
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters" title="Parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#responses" title="Responses" class="md-nav__link">
+    Responses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#produces" title="Produces" class="md-nav__link">
+    Produces
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-http-request" title="Example HTTP request" class="md-nav__link">
+    Example HTTP request
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request-path" title="Request path" class="md-nav__link">
+    Request path
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-http-response" title="Example HTTP response" class="md-nav__link">
+    Example HTTP response
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#response-200" title="Response 200" class="md-nav__link">
+    Response 200
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request-to-obtain-code" title="Request to obtain code" class="md-nav__link">
+    Request to obtain code
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_1" title="Parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#responses_1" title="Responses" class="md-nav__link">
+    Responses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consumes" title="Consumes" class="md-nav__link">
+    Consumes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#produces_1" title="Produces" class="md-nav__link">
+    Produces
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-http-request_1" title="Example HTTP request" class="md-nav__link">
+    Example HTTP request
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request-path_1" title="Request path" class="md-nav__link">
+    Request path
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request-formdata" title="Request formData" class="md-nav__link">
+    Request formData
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request-to-obtain-access-token-implicit-flow" title="Request to obtain access token. Implicit flow" class="md-nav__link">
+    Request to obtain access token. Implicit flow
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_2" title="Parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#responses_2" title="Responses" class="md-nav__link">
+    Responses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consumes_1" title="Consumes" class="md-nav__link">
+    Consumes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#produces_2" title="Produces" class="md-nav__link">
+    Produces
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-http-request_2" title="Example HTTP request" class="md-nav__link">
+    Example HTTP request
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request-path_2" title="Request path" class="md-nav__link">
+    Request path
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request-formdata_1" title="Request formData" class="md-nav__link">
+    Request formData
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request-to-obtain-public-key" title="Request to obtain public key" class="md-nav__link">
+    Request to obtain public key
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description" title="Description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#responses_3" title="Responses" class="md-nav__link">
+    Responses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#produces_3" title="Produces" class="md-nav__link">
+    Produces
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-http-request_3" title="Example HTTP request" class="md-nav__link">
+    Example HTTP request
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request-path_3" title="Request path" class="md-nav__link">
+    Request path
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-http-response_1" title="Example HTTP response" class="md-nav__link">
+    Example HTTP response
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#response-200_1" title="Response 200" class="md-nav__link">
+    Response 200
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request-to-obtain-access-token-from-code-authorization-code" title="Request to obtain access token from code. Authorization Code" class="md-nav__link">
+    Request to obtain access token from code. Authorization Code
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_3" title="Parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#responses_4" title="Responses" class="md-nav__link">
+    Responses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consumes_2" title="Consumes" class="md-nav__link">
+    Consumes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#produces_4" title="Produces" class="md-nav__link">
+    Produces
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-http-request_4" title="Example HTTP request" class="md-nav__link">
+    Example HTTP request
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request-path_4" title="Request path" class="md-nav__link">
+    Request path
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request-formdata_2" title="Request formData" class="md-nav__link">
+    Request formData
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#person-resource" title="Person Resource" class="md-nav__link">
+    Person Resource
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#save-or-update-person" title="Save or update person" class="md-nav__link">
+    Save or update person
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_4" title="Parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#body-parameter" title="Body parameter" class="md-nav__link">
+    Body parameter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#responses_5" title="Responses" class="md-nav__link">
+    Responses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#produces_5" title="Produces" class="md-nav__link">
+    Produces
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security" title="Security" class="md-nav__link">
+    Security
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-http-request_5" title="Example HTTP request" class="md-nav__link">
+    Example HTTP request
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request-path_5" title="Request path" class="md-nav__link">
+    Request path
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request-header" title="Request header" class="md-nav__link">
+    Request header
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request-body" title="Request body" class="md-nav__link">
+    Request body
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-http-response_2" title="Example HTTP response" class="md-nav__link">
+    Example HTTP response
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#response-200_2" title="Response 200" class="md-nav__link">
+    Response 200
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#obtain-list-of-users" title="Obtain list of users" class="md-nav__link">
+    Obtain list of users
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_5" title="Parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#responses_6" title="Responses" class="md-nav__link">
+    Responses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consumes_3" title="Consumes" class="md-nav__link">
+    Consumes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#produces_6" title="Produces" class="md-nav__link">
+    Produces
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security_1" title="Security" class="md-nav__link">
+    Security
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-http-request_6" title="Example HTTP request" class="md-nav__link">
+    Example HTTP request
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request-path_6" title="Request path" class="md-nav__link">
+    Request path
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request-header_1" title="Request header" class="md-nav__link">
+    Request header
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-http-response_3" title="Example HTTP response" class="md-nav__link">
+    Example HTTP response
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#response-200_3" title="Response 200" class="md-nav__link">
+    Response 200
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-person" title="Delete person" class="md-nav__link">
+    Delete person
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_6" title="Parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#responses_7" title="Responses" class="md-nav__link">
+    Responses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security_2" title="Security" class="md-nav__link">
+    Security
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-http-request_7" title="Example HTTP request" class="md-nav__link">
+    Example HTTP request
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request-path_7" title="Request path" class="md-nav__link">
+    Request path
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request-header_2" title="Request header" class="md-nav__link">
+    Request header
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-http-response_4" title="Example HTTP response" class="md-nav__link">
+    Example HTTP response
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#response-200_4" title="Response 200" class="md-nav__link">
+    Response 200
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-new-password" title="Set new password" class="md-nav__link">
+    Set new password
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_7" title="Parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#responses_8" title="Responses" class="md-nav__link">
+    Responses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consumes_4" title="Consumes" class="md-nav__link">
+    Consumes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#produces_7" title="Produces" class="md-nav__link">
+    Produces
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security_3" title="Security" class="md-nav__link">
+    Security
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-http-request_8" title="Example HTTP request" class="md-nav__link">
+    Example HTTP request
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request-path_8" title="Request path" class="md-nav__link">
+    Request path
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request-header_3" title="Request header" class="md-nav__link">
+    Request header
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request-formdata_3" title="Request formData" class="md-nav__link">
+    Request formData
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#find-person-by-id" title="Find person by ID" class="md-nav__link">
+    Find person by ID
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_8" title="Parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#responses_9" title="Responses" class="md-nav__link">
+    Responses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#produces_8" title="Produces" class="md-nav__link">
+    Produces
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security_4" title="Security" class="md-nav__link">
+    Security
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-http-request_9" title="Example HTTP request" class="md-nav__link">
+    Example HTTP request
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request-path_9" title="Request path" class="md-nav__link">
+    Request path
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request-header_4" title="Request header" class="md-nav__link">
+    Request header
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-http-response_5" title="Example HTTP response" class="md-nav__link">
+    Example HTTP response
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#response-200_5" title="Response 200" class="md-nav__link">
+    Response 200
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#definitions" title="Definitions" class="md-nav__link">
+    Definitions
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#loginpageview" title="LoginPageView" class="md-nav__link">
+    LoginPageView
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#person" title="Person" class="md-nav__link">
+    Person
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phone" title="Phone" class="md-nav__link">
+    Phone
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publickey" title="PublicKey" class="md-nav__link">
+    PublicKey
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security_5" title="Security" class="md-nav__link">
+    Security
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#oauth2" title="oauth2" class="md-nav__link">
+    oauth2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Web
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Web
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../web_projekt/" title="Štruktúra projektu" class="md-nav__link">
+      Štruktúra projektu
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../page_layout/" title="Rozloženie stránky" class="md-nav__link">
+      Rozloženie stránky
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="/#odkazy" title="Odkazy" class="md-nav__link">
+      Odkazy
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      GIT repozitár
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        GIT repozitár
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://github.com/hudikm/WindFarmDemo" title="WindfarmDemo service" class="md-nav__link">
+      WindfarmDemo service
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="https://github.com/hudikm/WindFarmDemoWeb" title="WindfarmDemo web server" class="md-nav__link">
+      WindfarmDemo web server
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Obsah</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" title="Overview" class="md-nav__link">
+    Overview
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uri-scheme" title="URI scheme" class="md-nav__link">
+    URI scheme
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tags" title="Tags" class="md-nav__link">
+    Tags
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resources" title="Resources" class="md-nav__link">
+    Resources
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#oauth2-and-login" title="OAuth2 And Login" class="md-nav__link">
+    OAuth2 And Login
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#display-login-page" title="Display Login page" class="md-nav__link">
+    Display Login page
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters" title="Parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#responses" title="Responses" class="md-nav__link">
+    Responses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#produces" title="Produces" class="md-nav__link">
+    Produces
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-http-request" title="Example HTTP request" class="md-nav__link">
+    Example HTTP request
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request-path" title="Request path" class="md-nav__link">
+    Request path
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-http-response" title="Example HTTP response" class="md-nav__link">
+    Example HTTP response
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#response-200" title="Response 200" class="md-nav__link">
+    Response 200
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request-to-obtain-code" title="Request to obtain code" class="md-nav__link">
+    Request to obtain code
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_1" title="Parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#responses_1" title="Responses" class="md-nav__link">
+    Responses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consumes" title="Consumes" class="md-nav__link">
+    Consumes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#produces_1" title="Produces" class="md-nav__link">
+    Produces
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-http-request_1" title="Example HTTP request" class="md-nav__link">
+    Example HTTP request
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request-path_1" title="Request path" class="md-nav__link">
+    Request path
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request-formdata" title="Request formData" class="md-nav__link">
+    Request formData
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request-to-obtain-access-token-implicit-flow" title="Request to obtain access token. Implicit flow" class="md-nav__link">
+    Request to obtain access token. Implicit flow
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_2" title="Parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#responses_2" title="Responses" class="md-nav__link">
+    Responses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consumes_1" title="Consumes" class="md-nav__link">
+    Consumes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#produces_2" title="Produces" class="md-nav__link">
+    Produces
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-http-request_2" title="Example HTTP request" class="md-nav__link">
+    Example HTTP request
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request-path_2" title="Request path" class="md-nav__link">
+    Request path
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request-formdata_1" title="Request formData" class="md-nav__link">
+    Request formData
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request-to-obtain-public-key" title="Request to obtain public key" class="md-nav__link">
+    Request to obtain public key
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#description" title="Description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#responses_3" title="Responses" class="md-nav__link">
+    Responses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#produces_3" title="Produces" class="md-nav__link">
+    Produces
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-http-request_3" title="Example HTTP request" class="md-nav__link">
+    Example HTTP request
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request-path_3" title="Request path" class="md-nav__link">
+    Request path
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-http-response_1" title="Example HTTP response" class="md-nav__link">
+    Example HTTP response
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#response-200_1" title="Response 200" class="md-nav__link">
+    Response 200
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request-to-obtain-access-token-from-code-authorization-code" title="Request to obtain access token from code. Authorization Code" class="md-nav__link">
+    Request to obtain access token from code. Authorization Code
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_3" title="Parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#responses_4" title="Responses" class="md-nav__link">
+    Responses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consumes_2" title="Consumes" class="md-nav__link">
+    Consumes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#produces_4" title="Produces" class="md-nav__link">
+    Produces
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-http-request_4" title="Example HTTP request" class="md-nav__link">
+    Example HTTP request
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request-path_4" title="Request path" class="md-nav__link">
+    Request path
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request-formdata_2" title="Request formData" class="md-nav__link">
+    Request formData
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#person-resource" title="Person Resource" class="md-nav__link">
+    Person Resource
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#save-or-update-person" title="Save or update person" class="md-nav__link">
+    Save or update person
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_4" title="Parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#body-parameter" title="Body parameter" class="md-nav__link">
+    Body parameter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#responses_5" title="Responses" class="md-nav__link">
+    Responses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#produces_5" title="Produces" class="md-nav__link">
+    Produces
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security" title="Security" class="md-nav__link">
+    Security
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-http-request_5" title="Example HTTP request" class="md-nav__link">
+    Example HTTP request
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request-path_5" title="Request path" class="md-nav__link">
+    Request path
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request-header" title="Request header" class="md-nav__link">
+    Request header
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request-body" title="Request body" class="md-nav__link">
+    Request body
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-http-response_2" title="Example HTTP response" class="md-nav__link">
+    Example HTTP response
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#response-200_2" title="Response 200" class="md-nav__link">
+    Response 200
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#obtain-list-of-users" title="Obtain list of users" class="md-nav__link">
+    Obtain list of users
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_5" title="Parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#responses_6" title="Responses" class="md-nav__link">
+    Responses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consumes_3" title="Consumes" class="md-nav__link">
+    Consumes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#produces_6" title="Produces" class="md-nav__link">
+    Produces
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security_1" title="Security" class="md-nav__link">
+    Security
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-http-request_6" title="Example HTTP request" class="md-nav__link">
+    Example HTTP request
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request-path_6" title="Request path" class="md-nav__link">
+    Request path
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request-header_1" title="Request header" class="md-nav__link">
+    Request header
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-http-response_3" title="Example HTTP response" class="md-nav__link">
+    Example HTTP response
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#response-200_3" title="Response 200" class="md-nav__link">
+    Response 200
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-person" title="Delete person" class="md-nav__link">
+    Delete person
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_6" title="Parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#responses_7" title="Responses" class="md-nav__link">
+    Responses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security_2" title="Security" class="md-nav__link">
+    Security
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-http-request_7" title="Example HTTP request" class="md-nav__link">
+    Example HTTP request
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request-path_7" title="Request path" class="md-nav__link">
+    Request path
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request-header_2" title="Request header" class="md-nav__link">
+    Request header
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-http-response_4" title="Example HTTP response" class="md-nav__link">
+    Example HTTP response
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#response-200_4" title="Response 200" class="md-nav__link">
+    Response 200
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set-new-password" title="Set new password" class="md-nav__link">
+    Set new password
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_7" title="Parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#responses_8" title="Responses" class="md-nav__link">
+    Responses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consumes_4" title="Consumes" class="md-nav__link">
+    Consumes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#produces_7" title="Produces" class="md-nav__link">
+    Produces
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security_3" title="Security" class="md-nav__link">
+    Security
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-http-request_8" title="Example HTTP request" class="md-nav__link">
+    Example HTTP request
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request-path_8" title="Request path" class="md-nav__link">
+    Request path
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request-header_3" title="Request header" class="md-nav__link">
+    Request header
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request-formdata_3" title="Request formData" class="md-nav__link">
+    Request formData
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#find-person-by-id" title="Find person by ID" class="md-nav__link">
+    Find person by ID
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameters_8" title="Parameters" class="md-nav__link">
+    Parameters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#responses_9" title="Responses" class="md-nav__link">
+    Responses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#produces_8" title="Produces" class="md-nav__link">
+    Produces
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security_4" title="Security" class="md-nav__link">
+    Security
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-http-request_9" title="Example HTTP request" class="md-nav__link">
+    Example HTTP request
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#request-path_9" title="Request path" class="md-nav__link">
+    Request path
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#request-header_4" title="Request header" class="md-nav__link">
+    Request header
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-http-response_5" title="Example HTTP response" class="md-nav__link">
+    Example HTTP response
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#response-200_5" title="Response 200" class="md-nav__link">
+    Response 200
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#definitions" title="Definitions" class="md-nav__link">
+    Definitions
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#loginpageview" title="LoginPageView" class="md-nav__link">
+    LoginPageView
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#person" title="Person" class="md-nav__link">
+    Person
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phone" title="Phone" class="md-nav__link">
+    Phone
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publickey" title="PublicKey" class="md-nav__link">
+    PublicKey
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security_5" title="Security" class="md-nav__link">
+    Security
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#oauth2" title="oauth2" class="md-nav__link">
+    oauth2
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/hudikm/WindFarmDemo/edit/master/docs/swagger_api.md" title="Upraviť túto stránku" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="windfarmdemo-microservices">WindFarmDemo microservices<a class="headerlink" href="#windfarmdemo-microservices" title="Permanent link">&para;</a></h1>
+<p>Swagger dokumentácia  je dostupna po spustení servera na adrese: <code>http://localhost:8085/api/swagger</code></p>
+<p><a name="overview"></a></p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<h3 id="uri-scheme">URI scheme<a class="headerlink" href="#uri-scheme" title="Permanent link">&para;</a></h3>
+<p><em>BasePath</em> : /api<br />
+<em>Schemes</em> : HTTP, HTTPS</p>
+<h3 id="tags">Tags<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h3>
+<ul>
+<li>OAuth2 and Login</li>
+<li>Person resource</li>
+</ul>
+<p><a name="paths"></a></p>
+<h2 id="resources">Resources<a class="headerlink" href="#resources" title="Permanent link">&para;</a></h2>
+<p><a name="oauth2-and-login_resource"></a></p>
+<h3 id="oauth2-and-login">OAuth2 And Login<a class="headerlink" href="#oauth2-and-login" title="Permanent link">&para;</a></h3>
+<hr />
+<p><a name="showloginpage"></a></p>
+<h4 id="display-login-page">Display Login page<a class="headerlink" href="#display-login-page" title="Permanent link">&para;</a></h4>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>GET /api/login
+</pre></div>
+</td></tr></table>
+
+<h5 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h5>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Query</strong></td>
+<td><strong>client_id</strong>  <br><em>required</em></td>
+<td>The id of the application that asks for authorization</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Query</strong></td>
+<td><strong>redirect_uri</strong>  <br><em>required</em></td>
+<td>Holds a URL. A successful response from this endpoint results in a redirect to this URL.</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Query</strong></td>
+<td><strong>response_type</strong>  <br><em>required</em></td>
+<td>Informs the Authorization Server of the desired authorization processing flow</td>
+<td>enum (code, token)</td>
+</tr>
+<tr>
+<td><strong>Query</strong></td>
+<td><strong>scope</strong>  <br><em>required</em></td>
+<td>A space-delimited list of permissions that the application requires.</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Query</strong></td>
+<td><strong>state</strong>  <br><em>required</em></td>
+<td>The primary reason for using the state parameter is to mitigate CSRF attacks. An opaque value, used for security purposes. If this request parameter is set in the request, then it is returned to the application as part of the redirect_uri.</td>
+<td>string</td>
+</tr>
+</tbody>
+</table>
+<h5 id="responses">Responses<a class="headerlink" href="#responses" title="Permanent link">&para;</a></h5>
+<table>
+<thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>200</strong></td>
+<td>successful operation</td>
+<td><a href="#loginpageview">LoginPageView</a></td>
+</tr>
+</tbody>
+</table>
+<h5 id="produces">Produces<a class="headerlink" href="#produces" title="Permanent link">&para;</a></h5>
+<ul>
+<li><code>text/html</code></li>
+</ul>
+<h5 id="example-http-request">Example HTTP request<a class="headerlink" href="#example-http-request" title="Permanent link">&para;</a></h5>
+<h6 id="request-path">Request path<a class="headerlink" href="#request-path" title="Permanent link">&para;</a></h6>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>/api/login?client_id=string&amp;redirect_uri=string&amp;response_type=string&amp;scope=string&amp;state=string
+</pre></div>
+</td></tr></table>
+
+<h5 id="example-http-response">Example HTTP response<a class="headerlink" href="#example-http-response" title="Permanent link">&para;</a></h5>
+<h6 id="response-200">Response 200<a class="headerlink" href="#response-200" title="Permanent link">&para;</a></h6>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;rootPath&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;sessionId&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;action&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+
+<hr />
+<p><a name="getaccesscode"></a></p>
+<h4 id="request-to-obtain-code">Request to obtain code<a class="headerlink" href="#request-to-obtain-code" title="Permanent link">&para;</a></h4>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>POST /api/login/code
+</pre></div>
+</td></tr></table>
+
+<h5 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h5>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>FormData</strong></td>
+<td><strong>action</strong>  <br><em>required</em></td>
+<td>object</td>
+</tr>
+<tr>
+<td><strong>FormData</strong></td>
+<td><strong>password</strong>  <br><em>required</em></td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>FormData</strong></td>
+<td><strong>sessionId</strong>  <br><em>required</em></td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>FormData</strong></td>
+<td><strong>stay_signin</strong>  <br><em>required</em></td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>FormData</strong></td>
+<td><strong>username</strong>  <br><em>required</em></td>
+<td>string</td>
+</tr>
+</tbody>
+</table>
+<h5 id="responses_1">Responses<a class="headerlink" href="#responses_1" title="Permanent link">&para;</a></h5>
+<table>
+<thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>default</strong></td>
+<td>successful operation</td>
+<td>No Content</td>
+</tr>
+</tbody>
+</table>
+<h5 id="consumes">Consumes<a class="headerlink" href="#consumes" title="Permanent link">&para;</a></h5>
+<ul>
+<li><code>application/x-www-form-urlencoded</code></li>
+</ul>
+<h5 id="produces_1">Produces<a class="headerlink" href="#produces_1" title="Permanent link">&para;</a></h5>
+<ul>
+<li><code>application/x-www-form-urlencoded</code></li>
+</ul>
+<h5 id="example-http-request_1">Example HTTP request<a class="headerlink" href="#example-http-request_1" title="Permanent link">&para;</a></h5>
+<h6 id="request-path_1">Request path<a class="headerlink" href="#request-path_1" title="Permanent link">&para;</a></h6>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>/api/login/code
+</pre></div>
+</td></tr></table>
+
+<h6 id="request-formdata">Request formData<a class="headerlink" href="#request-formdata" title="Permanent link">&para;</a></h6>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="s2">&quot;string&quot;</span>
+</pre></div>
+</td></tr></table>
+
+<hr />
+<p><a name="implicitflowauth"></a></p>
+<h4 id="request-to-obtain-access-token-implicit-flow">Request to obtain access token. Implicit flow<a class="headerlink" href="#request-to-obtain-access-token-implicit-flow" title="Permanent link">&para;</a></h4>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>POST /api/login/implicit
+</pre></div>
+</td></tr></table>
+
+<h5 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">&para;</a></h5>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>FormData</strong></td>
+<td><strong>action</strong>  <br><em>required</em></td>
+<td>object</td>
+</tr>
+<tr>
+<td><strong>FormData</strong></td>
+<td><strong>password</strong>  <br><em>required</em></td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>FormData</strong></td>
+<td><strong>sessionId</strong>  <br><em>required</em></td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>FormData</strong></td>
+<td><strong>stay_signin</strong>  <br><em>required</em></td>
+<td>boolean</td>
+</tr>
+<tr>
+<td><strong>FormData</strong></td>
+<td><strong>username</strong>  <br><em>required</em></td>
+<td>string</td>
+</tr>
+</tbody>
+</table>
+<h5 id="responses_2">Responses<a class="headerlink" href="#responses_2" title="Permanent link">&para;</a></h5>
+<table>
+<thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>default</strong></td>
+<td>successful operation</td>
+<td>No Content</td>
+</tr>
+</tbody>
+</table>
+<h5 id="consumes_1">Consumes<a class="headerlink" href="#consumes_1" title="Permanent link">&para;</a></h5>
+<ul>
+<li><code>application/x-www-form-urlencoded</code></li>
+</ul>
+<h5 id="produces_2">Produces<a class="headerlink" href="#produces_2" title="Permanent link">&para;</a></h5>
+<ul>
+<li><code>application/json</code></li>
+</ul>
+<h5 id="example-http-request_2">Example HTTP request<a class="headerlink" href="#example-http-request_2" title="Permanent link">&para;</a></h5>
+<h6 id="request-path_2">Request path<a class="headerlink" href="#request-path_2" title="Permanent link">&para;</a></h6>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>/api/login/implicit
+</pre></div>
+</td></tr></table>
+
+<h6 id="request-formdata_1">Request formData<a class="headerlink" href="#request-formdata_1" title="Permanent link">&para;</a></h6>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="s2">&quot;string&quot;</span>
+</pre></div>
+</td></tr></table>
+
+<hr />
+<p><a name="getpublickey"></a></p>
+<h4 id="request-to-obtain-public-key">Request to obtain public key<a class="headerlink" href="#request-to-obtain-public-key" title="Permanent link">&para;</a></h4>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>GET /api/login/public-key
+</pre></div>
+</td></tr></table>
+
+<h5 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h5>
+<p>An obtained public key can by used to verify JWT token</p>
+<h5 id="responses_3">Responses<a class="headerlink" href="#responses_3" title="Permanent link">&para;</a></h5>
+<table>
+<thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>200</strong></td>
+<td>successful operation</td>
+<td><a href="#publickey">PublicKey</a></td>
+</tr>
+</tbody>
+</table>
+<h5 id="produces_3">Produces<a class="headerlink" href="#produces_3" title="Permanent link">&para;</a></h5>
+<ul>
+<li><code>application/json</code></li>
+</ul>
+<h5 id="example-http-request_3">Example HTTP request<a class="headerlink" href="#example-http-request_3" title="Permanent link">&para;</a></h5>
+<h6 id="request-path_3">Request path<a class="headerlink" href="#request-path_3" title="Permanent link">&para;</a></h6>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>/api/login/public-key
+</pre></div>
+</td></tr></table>
+
+<h5 id="example-http-response_1">Example HTTP response<a class="headerlink" href="#example-http-response_1" title="Permanent link">&para;</a></h5>
+<h6 id="response-200_1">Response 200<a class="headerlink" href="#response-200_1" title="Permanent link">&para;</a></h6>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;pubKey&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;keyFormat&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;keyAlg&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+
+<hr />
+<p><a name="getaccesstoken"></a></p>
+<h4 id="request-to-obtain-access-token-from-code-authorization-code">Request to obtain access token from code. Authorization Code<a class="headerlink" href="#request-to-obtain-access-token-from-code-authorization-code" title="Permanent link">&para;</a></h4>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>POST /api/login/token
+</pre></div>
+</td></tr></table>
+
+<h5 id="parameters_3">Parameters<a class="headerlink" href="#parameters_3" title="Permanent link">&para;</a></h5>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>FormData</strong></td>
+<td><strong>client_id</strong>  <br><em>required</em></td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>FormData</strong></td>
+<td><strong>client_secret</strong>  <br><em>required</em></td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>FormData</strong></td>
+<td><strong>code</strong>  <br><em>required</em></td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>FormData</strong></td>
+<td><strong>grant_type</strong>  <br><em>required</em></td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>FormData</strong></td>
+<td><strong>redirect_uri</strong>  <br><em>required</em></td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>FormData</strong></td>
+<td><strong>state</strong>  <br><em>required</em></td>
+<td>string</td>
+</tr>
+</tbody>
+</table>
+<h5 id="responses_4">Responses<a class="headerlink" href="#responses_4" title="Permanent link">&para;</a></h5>
+<table>
+<thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>default</strong></td>
+<td>successful operation</td>
+<td>No Content</td>
+</tr>
+</tbody>
+</table>
+<h5 id="consumes_2">Consumes<a class="headerlink" href="#consumes_2" title="Permanent link">&para;</a></h5>
+<ul>
+<li><code>application/x-www-form-urlencoded</code></li>
+</ul>
+<h5 id="produces_4">Produces<a class="headerlink" href="#produces_4" title="Permanent link">&para;</a></h5>
+<ul>
+<li><code>application/json</code></li>
+</ul>
+<h5 id="example-http-request_4">Example HTTP request<a class="headerlink" href="#example-http-request_4" title="Permanent link">&para;</a></h5>
+<h6 id="request-path_4">Request path<a class="headerlink" href="#request-path_4" title="Permanent link">&para;</a></h6>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>/api/login/token
+</pre></div>
+</td></tr></table>
+
+<h6 id="request-formdata_2">Request formData<a class="headerlink" href="#request-formdata_2" title="Permanent link">&para;</a></h6>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="s2">&quot;string&quot;</span>
+</pre></div>
+</td></tr></table>
+
+<p><a name="person-resource_resource"></a></p>
+<h3 id="person-resource">Person Resource<a class="headerlink" href="#person-resource" title="Permanent link">&para;</a></h3>
+<hr />
+<p><a name="setpersoninfo"></a></p>
+<h4 id="save-or-update-person">Save or update person<a class="headerlink" href="#save-or-update-person" title="Permanent link">&para;</a></h4>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>POST /api/persons
+</pre></div>
+</td></tr></table>
+
+<h5 id="parameters_4">Parameters<a class="headerlink" href="#parameters_4" title="Permanent link">&para;</a></h5>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Authorization</strong>  <br><em>optional</em></td>
+<td>Bearer token</td>
+<td>string</td>
+</tr>
+</tbody>
+</table>
+<h5 id="body-parameter">Body parameter<a class="headerlink" href="#body-parameter" title="Permanent link">&para;</a></h5>
+<p><em>Name</em> : body<br />
+<em>Flags</em> : optional<br />
+<em>Type</em> : <a href="#person">Person</a></p>
+<h5 id="responses_5">Responses<a class="headerlink" href="#responses_5" title="Permanent link">&para;</a></h5>
+<table>
+<thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>200</strong></td>
+<td>successful operation</td>
+<td><a href="#person">Person</a></td>
+</tr>
+</tbody>
+</table>
+<h5 id="produces_5">Produces<a class="headerlink" href="#produces_5" title="Permanent link">&para;</a></h5>
+<ul>
+<li><code>application/json</code></li>
+</ul>
+<h5 id="security">Security<a class="headerlink" href="#security" title="Permanent link">&para;</a></h5>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Scopes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>oauth2</strong></td>
+<td><strong><a href="#oauth2">oauth2</a></strong></td>
+<td>ADMIN,USER_READ_ONLY</td>
+</tr>
+</tbody>
+</table>
+<h5 id="example-http-request_5">Example HTTP request<a class="headerlink" href="#example-http-request_5" title="Permanent link">&para;</a></h5>
+<h6 id="request-path_5">Request path<a class="headerlink" href="#request-path_5" title="Permanent link">&para;</a></h6>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>/api/persons
+</pre></div>
+</td></tr></table>
+
+<h6 id="request-header">Request header<a class="headerlink" href="#request-header" title="Permanent link">&para;</a></h6>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="s2">&quot;string&quot;</span>
+</pre></div>
+</td></tr></table>
+
+<h6 id="request-body">Request body<a class="headerlink" href="#request-body" title="Permanent link">&para;</a></h6>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;id&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="nt">&quot;userName&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;roles&quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;string&quot;</span> <span class="p">],</span>
+  <span class="nt">&quot;email&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;phoneNumbers&quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="p">{</span>
+    <span class="nt">&quot;owner&quot;</span> <span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;id&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="nt">&quot;userName&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;roles&quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;string&quot;</span> <span class="p">],</span>
+      <span class="nt">&quot;email&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;phoneNumbers&quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="p">{</span>
+        <span class="nt">&quot;owner&quot;</span> <span class="p">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;number&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;id&quot;</span> <span class="p">:</span> <span class="mi">0</span>
+      <span class="p">}</span> <span class="p">],</span>
+      <span class="nt">&quot;firstName&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;lastName&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;number&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;id&quot;</span> <span class="p">:</span> <span class="mi">0</span>
+  <span class="p">}</span> <span class="p">],</span>
+  <span class="nt">&quot;firstName&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;lastName&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+
+<h5 id="example-http-response_2">Example HTTP response<a class="headerlink" href="#example-http-response_2" title="Permanent link">&para;</a></h5>
+<h6 id="response-200_2">Response 200<a class="headerlink" href="#response-200_2" title="Permanent link">&para;</a></h6>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;id&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="nt">&quot;userName&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;roles&quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;string&quot;</span> <span class="p">],</span>
+  <span class="nt">&quot;email&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;phoneNumbers&quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="p">{</span>
+    <span class="nt">&quot;owner&quot;</span> <span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;id&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="nt">&quot;userName&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;roles&quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;string&quot;</span> <span class="p">],</span>
+      <span class="nt">&quot;email&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;phoneNumbers&quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="p">{</span>
+        <span class="nt">&quot;owner&quot;</span> <span class="p">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;number&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;id&quot;</span> <span class="p">:</span> <span class="mi">0</span>
+      <span class="p">}</span> <span class="p">],</span>
+      <span class="nt">&quot;firstName&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;lastName&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;number&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;id&quot;</span> <span class="p">:</span> <span class="mi">0</span>
+  <span class="p">}</span> <span class="p">],</span>
+  <span class="nt">&quot;firstName&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;lastName&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+
+<hr />
+<p><a name="getlistofpersons"></a></p>
+<h4 id="obtain-list-of-users">Obtain list of users<a class="headerlink" href="#obtain-list-of-users" title="Permanent link">&para;</a></h4>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>GET /api/persons
+</pre></div>
+</td></tr></table>
+
+<h5 id="parameters_5">Parameters<a class="headerlink" href="#parameters_5" title="Permanent link">&para;</a></h5>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Authorization</strong>  <br><em>optional</em></td>
+<td>Bearer token</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Query</strong></td>
+<td><strong>limit</strong>  <br><em>optional</em></td>
+<td></td>
+<td>integer (int32)</td>
+</tr>
+<tr>
+<td><strong>Query</strong></td>
+<td><strong>page</strong>  <br><em>optional</em></td>
+<td></td>
+<td>integer (int32)</td>
+</tr>
+</tbody>
+</table>
+<h5 id="responses_6">Responses<a class="headerlink" href="#responses_6" title="Permanent link">&para;</a></h5>
+<table>
+<thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>200</strong></td>
+<td>successful operation</td>
+<td>&lt; <a href="#person">Person</a> &gt; array</td>
+</tr>
+</tbody>
+</table>
+<h5 id="consumes_3">Consumes<a class="headerlink" href="#consumes_3" title="Permanent link">&para;</a></h5>
+<ul>
+<li><code>application/json</code></li>
+</ul>
+<h5 id="produces_6">Produces<a class="headerlink" href="#produces_6" title="Permanent link">&para;</a></h5>
+<ul>
+<li><code>application/json</code></li>
+</ul>
+<h5 id="security_1">Security<a class="headerlink" href="#security_1" title="Permanent link">&para;</a></h5>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Scopes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>oauth2</strong></td>
+<td><strong><a href="#oauth2">oauth2</a></strong></td>
+<td>ADMIN</td>
+</tr>
+</tbody>
+</table>
+<h5 id="example-http-request_6">Example HTTP request<a class="headerlink" href="#example-http-request_6" title="Permanent link">&para;</a></h5>
+<h6 id="request-path_6">Request path<a class="headerlink" href="#request-path_6" title="Permanent link">&para;</a></h6>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>/api/persons
+</pre></div>
+</td></tr></table>
+
+<h6 id="request-header_1">Request header<a class="headerlink" href="#request-header_1" title="Permanent link">&para;</a></h6>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="s2">&quot;string&quot;</span>
+</pre></div>
+</td></tr></table>
+
+<h5 id="example-http-response_3">Example HTTP response<a class="headerlink" href="#example-http-response_3" title="Permanent link">&para;</a></h5>
+<h6 id="response-200_3">Response 200<a class="headerlink" href="#response-200_3" title="Permanent link">&para;</a></h6>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">[</span> <span class="p">{</span>
+  <span class="nt">&quot;id&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="nt">&quot;userName&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;roles&quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;string&quot;</span> <span class="p">],</span>
+  <span class="nt">&quot;email&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;phoneNumbers&quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="p">{</span>
+    <span class="nt">&quot;owner&quot;</span> <span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;id&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="nt">&quot;userName&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;roles&quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;string&quot;</span> <span class="p">],</span>
+      <span class="nt">&quot;email&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;phoneNumbers&quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="p">{</span>
+        <span class="nt">&quot;owner&quot;</span> <span class="p">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;number&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;id&quot;</span> <span class="p">:</span> <span class="mi">0</span>
+      <span class="p">}</span> <span class="p">],</span>
+      <span class="nt">&quot;firstName&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;lastName&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;number&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;id&quot;</span> <span class="p">:</span> <span class="mi">0</span>
+  <span class="p">}</span> <span class="p">],</span>
+  <span class="nt">&quot;firstName&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;lastName&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span>
+<span class="p">}</span> <span class="p">]</span>
+</pre></div>
+</td></tr></table>
+
+<hr />
+<p><a name="deleteperson"></a></p>
+<h4 id="delete-person">Delete person<a class="headerlink" href="#delete-person" title="Permanent link">&para;</a></h4>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>DELETE /api/persons
+</pre></div>
+</td></tr></table>
+
+<h5 id="parameters_6">Parameters<a class="headerlink" href="#parameters_6" title="Permanent link">&para;</a></h5>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Authorization</strong>  <br><em>optional</em></td>
+<td>Bearer token</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Query</strong></td>
+<td><strong>id</strong>  <br><em>optional</em></td>
+<td></td>
+<td>integer (int64)</td>
+</tr>
+</tbody>
+</table>
+<h5 id="responses_7">Responses<a class="headerlink" href="#responses_7" title="Permanent link">&para;</a></h5>
+<table>
+<thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>200</strong></td>
+<td>successful operation</td>
+<td><a href="#person">Person</a></td>
+</tr>
+</tbody>
+</table>
+<h5 id="security_2">Security<a class="headerlink" href="#security_2" title="Permanent link">&para;</a></h5>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Scopes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>oauth2</strong></td>
+<td><strong><a href="#oauth2">oauth2</a></strong></td>
+<td>ADMIN</td>
+</tr>
+</tbody>
+</table>
+<h5 id="example-http-request_7">Example HTTP request<a class="headerlink" href="#example-http-request_7" title="Permanent link">&para;</a></h5>
+<h6 id="request-path_7">Request path<a class="headerlink" href="#request-path_7" title="Permanent link">&para;</a></h6>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>/api/persons
+</pre></div>
+</td></tr></table>
+
+<h6 id="request-header_2">Request header<a class="headerlink" href="#request-header_2" title="Permanent link">&para;</a></h6>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="s2">&quot;string&quot;</span>
+</pre></div>
+</td></tr></table>
+
+<h5 id="example-http-response_4">Example HTTP response<a class="headerlink" href="#example-http-response_4" title="Permanent link">&para;</a></h5>
+<h6 id="response-200_4">Response 200<a class="headerlink" href="#response-200_4" title="Permanent link">&para;</a></h6>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;id&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="nt">&quot;userName&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;roles&quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;string&quot;</span> <span class="p">],</span>
+  <span class="nt">&quot;email&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;phoneNumbers&quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="p">{</span>
+    <span class="nt">&quot;owner&quot;</span> <span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;id&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="nt">&quot;userName&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;roles&quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;string&quot;</span> <span class="p">],</span>
+      <span class="nt">&quot;email&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;phoneNumbers&quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="p">{</span>
+        <span class="nt">&quot;owner&quot;</span> <span class="p">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;number&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;id&quot;</span> <span class="p">:</span> <span class="mi">0</span>
+      <span class="p">}</span> <span class="p">],</span>
+      <span class="nt">&quot;firstName&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;lastName&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;number&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;id&quot;</span> <span class="p">:</span> <span class="mi">0</span>
+  <span class="p">}</span> <span class="p">],</span>
+  <span class="nt">&quot;firstName&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;lastName&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+
+<hr />
+<p><a name="setnewpassword"></a></p>
+<h4 id="set-new-password">Set new password<a class="headerlink" href="#set-new-password" title="Permanent link">&para;</a></h4>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>POST /api/persons/password
+</pre></div>
+</td></tr></table>
+
+<h5 id="parameters_7">Parameters<a class="headerlink" href="#parameters_7" title="Permanent link">&para;</a></h5>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Authorization</strong>  <br><em>optional</em></td>
+<td>Bearer token</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Query</strong></td>
+<td><strong>id</strong>  <br><em>optional</em></td>
+<td></td>
+<td>integer (int64)</td>
+</tr>
+<tr>
+<td><strong>FormData</strong></td>
+<td><strong>password</strong>  <br><em>optional</em></td>
+<td></td>
+<td>string</td>
+</tr>
+</tbody>
+</table>
+<h5 id="responses_8">Responses<a class="headerlink" href="#responses_8" title="Permanent link">&para;</a></h5>
+<table>
+<thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>default</strong></td>
+<td>successful operation</td>
+<td>No Content</td>
+</tr>
+</tbody>
+</table>
+<h5 id="consumes_4">Consumes<a class="headerlink" href="#consumes_4" title="Permanent link">&para;</a></h5>
+<ul>
+<li><code>application/x-www-form-urlencoded</code></li>
+</ul>
+<h5 id="produces_7">Produces<a class="headerlink" href="#produces_7" title="Permanent link">&para;</a></h5>
+<ul>
+<li><code>application/json</code></li>
+</ul>
+<h5 id="security_3">Security<a class="headerlink" href="#security_3" title="Permanent link">&para;</a></h5>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Scopes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>oauth2</strong></td>
+<td><strong><a href="#oauth2">oauth2</a></strong></td>
+<td>ADMIN</td>
+</tr>
+</tbody>
+</table>
+<h5 id="example-http-request_8">Example HTTP request<a class="headerlink" href="#example-http-request_8" title="Permanent link">&para;</a></h5>
+<h6 id="request-path_8">Request path<a class="headerlink" href="#request-path_8" title="Permanent link">&para;</a></h6>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>/api/persons/password
+</pre></div>
+</td></tr></table>
+
+<h6 id="request-header_3">Request header<a class="headerlink" href="#request-header_3" title="Permanent link">&para;</a></h6>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="s2">&quot;string&quot;</span>
+</pre></div>
+</td></tr></table>
+
+<h6 id="request-formdata_3">Request formData<a class="headerlink" href="#request-formdata_3" title="Permanent link">&para;</a></h6>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="s2">&quot;string&quot;</span>
+</pre></div>
+</td></tr></table>
+
+<hr />
+<p><a name="getpersoninfo"></a></p>
+<h4 id="find-person-by-id">Find person by ID<a class="headerlink" href="#find-person-by-id" title="Permanent link">&para;</a></h4>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>GET /api/persons/{id}
+</pre></div>
+</td></tr></table>
+
+<h5 id="parameters_8">Parameters<a class="headerlink" href="#parameters_8" title="Permanent link">&para;</a></h5>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Header</strong></td>
+<td><strong>Authorization</strong>  <br><em>optional</em></td>
+<td>Bearer token</td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>Path</strong></td>
+<td><strong>id</strong>  <br><em>required</em></td>
+<td></td>
+<td>integer (int64)</td>
+</tr>
+</tbody>
+</table>
+<h5 id="responses_9">Responses<a class="headerlink" href="#responses_9" title="Permanent link">&para;</a></h5>
+<table>
+<thead>
+<tr>
+<th>HTTP Code</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>200</strong></td>
+<td>successful operation</td>
+<td><a href="#person">Person</a></td>
+</tr>
+</tbody>
+</table>
+<h5 id="produces_8">Produces<a class="headerlink" href="#produces_8" title="Permanent link">&para;</a></h5>
+<ul>
+<li><code>application/json</code></li>
+</ul>
+<h5 id="security_4">Security<a class="headerlink" href="#security_4" title="Permanent link">&para;</a></h5>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Name</th>
+<th>Scopes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>oauth2</strong></td>
+<td><strong><a href="#oauth2">oauth2</a></strong></td>
+<td>ADMIN,USER_READ_ONLY</td>
+</tr>
+</tbody>
+</table>
+<h5 id="example-http-request_9">Example HTTP request<a class="headerlink" href="#example-http-request_9" title="Permanent link">&para;</a></h5>
+<h6 id="request-path_9">Request path<a class="headerlink" href="#request-path_9" title="Permanent link">&para;</a></h6>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>/api/persons/0
+</pre></div>
+</td></tr></table>
+
+<h6 id="request-header_4">Request header<a class="headerlink" href="#request-header_4" title="Permanent link">&para;</a></h6>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="s2">&quot;string&quot;</span>
+</pre></div>
+</td></tr></table>
+
+<h5 id="example-http-response_5">Example HTTP response<a class="headerlink" href="#example-http-response_5" title="Permanent link">&para;</a></h5>
+<h6 id="response-200_5">Response 200<a class="headerlink" href="#response-200_5" title="Permanent link">&para;</a></h6>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;id&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="nt">&quot;userName&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;roles&quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;string&quot;</span> <span class="p">],</span>
+  <span class="nt">&quot;email&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;phoneNumbers&quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="p">{</span>
+    <span class="nt">&quot;owner&quot;</span> <span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;id&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="nt">&quot;userName&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;roles&quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;string&quot;</span> <span class="p">],</span>
+      <span class="nt">&quot;email&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;phoneNumbers&quot;</span> <span class="p">:</span> <span class="p">[</span> <span class="p">{</span>
+        <span class="nt">&quot;owner&quot;</span> <span class="p">:</span> <span class="s2">&quot;...&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;number&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;id&quot;</span> <span class="p">:</span> <span class="mi">0</span>
+      <span class="p">}</span> <span class="p">],</span>
+      <span class="nt">&quot;firstName&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;lastName&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;number&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;id&quot;</span> <span class="p">:</span> <span class="mi">0</span>
+  <span class="p">}</span> <span class="p">],</span>
+  <span class="nt">&quot;firstName&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;lastName&quot;</span> <span class="p">:</span> <span class="s2">&quot;string&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+
+<p><a name="definitions"></a></p>
+<h2 id="definitions">Definitions<a class="headerlink" href="#definitions" title="Permanent link">&para;</a></h2>
+<p><a name="loginpageview"></a></p>
+<h3 id="loginpageview">LoginPageView<a class="headerlink" href="#loginpageview" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>action</strong>  <br><em>optional</em></td>
+<td><strong>Example</strong> : <code>"string"</code></td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>rootPath</strong>  <br><em>optional</em></td>
+<td><strong>Example</strong> : <code>"string"</code></td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>sessionId</strong>  <br><em>optional</em></td>
+<td><strong>Example</strong> : <code>"string"</code></td>
+<td>string</td>
+</tr>
+</tbody>
+</table>
+<p><a name="person"></a></p>
+<h3 id="person">Person<a class="headerlink" href="#person" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>email</strong>  <br><em>optional</em></td>
+<td><strong>Example</strong> : <code>"string"</code></td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>firstName</strong>  <br><em>optional</em></td>
+<td><strong>Example</strong> : <code>"string"</code></td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>id</strong>  <br><em>optional</em></td>
+<td><strong>Example</strong> : <code>0</code></td>
+<td>integer (int64)</td>
+</tr>
+<tr>
+<td><strong>lastName</strong>  <br><em>optional</em></td>
+<td><strong>Example</strong> : <code>"string"</code></td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>phoneNumbers</strong>  <br><em>optional</em></td>
+<td><strong>Example</strong> : <code>[ "[phone](#phone)" ]</code></td>
+<td>&lt; <a href="#phone">Phone</a> &gt; array</td>
+</tr>
+<tr>
+<td><strong>roles</strong>  <br><em>optional</em></td>
+<td><strong>Example</strong> : <code>[ "string" ]</code></td>
+<td>&lt; string &gt; array</td>
+</tr>
+<tr>
+<td><strong>userName</strong>  <br><em>optional</em></td>
+<td><strong>Example</strong> : <code>"string"</code></td>
+<td>string</td>
+</tr>
+</tbody>
+</table>
+<p><a name="phone"></a></p>
+<h3 id="phone">Phone<a class="headerlink" href="#phone" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>id</strong>  <br><em>optional</em></td>
+<td><strong>Example</strong> : <code>0</code></td>
+<td>integer (int64)</td>
+</tr>
+<tr>
+<td><strong>number</strong>  <br><em>optional</em></td>
+<td><strong>Example</strong> : <code>"string"</code></td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>owner</strong>  <br><em>optional</em></td>
+<td><strong>Example</strong> : <code>"[person](#person)"</code></td>
+<td><a href="#person">Person</a></td>
+</tr>
+</tbody>
+</table>
+<p><a name="publickey"></a></p>
+<h3 id="publickey">PublicKey<a class="headerlink" href="#publickey" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>keyAlg</strong>  <br><em>optional</em></td>
+<td><strong>Example</strong> : <code>"string"</code></td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>keyFormat</strong>  <br><em>optional</em></td>
+<td><strong>Example</strong> : <code>"string"</code></td>
+<td>string</td>
+</tr>
+<tr>
+<td><strong>pubKey</strong>  <br><em>optional</em></td>
+<td><strong>Example</strong> : <code>"string"</code></td>
+<td>string</td>
+</tr>
+</tbody>
+</table>
+<p><a name="securityscheme"></a></p>
+<h2 id="security_5">Security<a class="headerlink" href="#security_5" title="Permanent link">&para;</a></h2>
+<p><a name="oauth2"></a></p>
+<h3 id="oauth2">oauth2<a class="headerlink" href="#oauth2" title="Permanent link">&para;</a></h3>
+<p>oauth2</p>
+<p><em>Type</em> : oauth2<br />
+<em>Flow</em> : accessCode<br />
+<em>Token URL</em> : http://localhost:8085/api/login<br />
+<em>Token URL</em> : http://localhost:8085/api/login/token</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ADMIN</td>
+<td>Access to all resources</td>
+</tr>
+<tr>
+<td>USER_READ_ONLY</td>
+<td>Limited access</td>
+</tr>
+</tbody>
+</table>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../projekt/" title="Štruktúra projektu" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Späť
+                </span>
+                Štruktúra projektu
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../web_projekt/" title="Štruktúra projektu" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Ďalej
+                </span>
+                Štruktúra projektu
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.d9aa80ab.js"></script>
+      
+        
+        
+          
+          <script src="../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+    
+  </body>
+</html>
